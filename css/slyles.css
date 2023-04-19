@@ -1,0 +1,257 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input {
+  border-style: none;
+  background: transparent;
+  outline: none;
+}
+
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  background: #020a18;
+}
+
+#board {
+  position: relative;
+  max-width: 580px;
+  width: 100%;
+  margin: auto;
+}
+
+#messageArea {
+  text-align: center;
+  font-size: 22px;
+  color: #8face5;
+  border-radius: 5px;
+  padding: 40px 0 0;
+  margin: 0 0 0 20px;
+}
+
+.animation {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax > use{
+    animation:move-forever 12s linear infinite;
+}
+
+use:nth-child(1){
+    animation-delay: -2s;
+}
+
+use:nth-child(2){
+    animation-delay: -2s; 
+    animation-duration: 5s
+}
+
+use:nth-child(3){
+    animation-delay: -4s; 
+    animation-duration: 3s
+}
+
+@keyframes move-forever{
+  0%{transform: translate(-90px , 0%)}
+  100%{transform: translate(85px , 0%)} 
+}
+
+.editorial {
+  display: block;
+  width: 100%;
+  height: 10em;
+  max-height: 50px; 
+   margin: 0;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 3px;
+  margin: 0 auto;
+}
+
+td {
+  position: relative;
+  min-width: 74px;
+  height: 74px;
+  border: 2px solid #8face5;
+  box-shadow: 1px 2px 8px #7c84bd;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.numbers,
+.letters {
+  text-align: center;
+  font-size: 20px;
+  color: #8face5;
+  height: 40px;
+  width: 40px;
+  border: none;
+}
+
+.letters {
+  padding: 0 8px 0 0;
+}
+
+td:hover {
+  background: #1e2b48;
+  box-shadow: 1px 2px 8px #95a1e7;
+}
+
+td div {
+  width: 70px;
+  height: 70px;
+}
+
+.form-box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+  max-width: 290px;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  padding: 0.4rem 1rem 0.6rem;
+}
+
+.form-box::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  height: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: linear-gradient(
+    to right,
+    #b294ff,
+    #57e6e6,
+    #feffb8,
+    #57e6e6,
+    #b294ff,
+    #57e6e6
+  );
+  background-size: 500% auto;
+  animation: gradient 3s linear infinite;
+}
+
+#guessInput {
+  flex-grow: 1;
+  color: grey;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  background: none;
+}
+
+#guessInput:-webkiyt-input-placeholder {
+  color: #7881a1;
+}
+
+#fireButton {
+  color: #7881a1;
+  font-size: 24px;
+  line-height: middle;
+  transition: color 0.25s;
+}
+
+#fireButton:hover {
+  color: #9aaacf;
+}
+
+.hit {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 60px;
+  height: 30px;
+  background: #284a8a;
+  border-radius: 5px 5px 50px 35px;
+  animation: wave 1s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(-7deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.hit::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 10px;
+  height: 10px;
+  background: #5f93d2;
+  border-radius: 50%;
+  box-shadow: 15px 0 #9eaefc, 30px 0 #5f89d2;
+}
+
+.hit::before {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  width: 14px;
+  height: 20px;
+  background: #517ac6;
+  box-shadow: 15px 4px 0 -4px #7d84c7;
+}
+
+.miss {
+  width: 60px;
+  height: 8px;
+  position: absolute;
+  top: 30px;
+  left: 5px;
+  border-radius: 5px;
+  background: #4773c2;
+  transform-origin: center center;
+  transform: rotate(45deg);
+  box-shadow: 1px -4px #284a8a;
+  animation: blow 0.5s ease-in;
+  pointer-events: none;
+}
+
+@keyframes blow {
+  0% {
+    transform: scale(0);
+  }
+  1% {
+    transform: rotate(45deg);
+  }
+  80% {
+    transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.miss::after {
+  content: "";
+  width: 60px;
+  height: 8px;
+  position: absolute;
+  border-radius: 5px;
+  background: #4773c2;
+  transform: rotate(90deg);
+  box-shadow: 1px -4px #284a8a;
+}
